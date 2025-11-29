@@ -397,13 +397,13 @@ body.nav-active {
 
 
 
-/* 
+
 .navbar,
 .overlay,
 .header,
 .btn {
   display: none;
-} */
+}
 
 .header {
   position: fixed;
