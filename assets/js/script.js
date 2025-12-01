@@ -55,3 +55,67 @@ window.addEventListener("scroll", function () {
     header.classList.remove("active")
   }
 })
+
+
+
+
+
+
+const heroSlider = document.querySelector("[ data-hero-slider]")
+const heroSliderItems = document.querySelectorAll("[data-hero-slider-item]")
+const heroSliderPrevBtn = document.querySelector("[data-prev-btn]")
+const heroSolierNextBtn = document.querySelector("[data-next-btn]")
+
+
+let currentSliderPos = 0
+let lastActiveSLiderItem = heroSliderItems[0]
+
+const updateSliderPos = function () {
+  lastActiveSLiderItem.classList.remove("active")
+  heroSliderItems[currentSliderPos].classList.add("active")
+  lastActiveSLiderItem = heroSliderItems[currentSliderPos]
+}
+
+const sliderNext = function () {
+  if (currentSliderPos >= heroSliderItems.length - 1) {
+    currentSliderPos = 0
+  }
+  else {
+    currentSliderPos++
+  }
+
+  updateSliderPos()
+}
+
+heroSolierNextBtn.add("click", sliderNext)
+
+const sliderPrev = function () {
+  if (currentSliderPos <= 0) {
+    currentSliderPos = heroSliderItems.length - 1
+  }
+  else {
+    currentSliderPos--
+  }
+
+  updateSliderPos()
+}
+heroSliderPrevBtn.addEventListener("click", sliderPrev)
+
+
+
+
+
+let autoSliderInterval;
+const autoSlide = function () {
+  autoSliderInterval = setInterval(function () {
+    sliderNext()
+  }, 7000)
+}
+
+addEventOnElements([heroSliderItems,heroSliderPrevBtn], "mouseover", function(){
+  clearInterval(autoSliderInterval)
+})
+
+addEventOnElements([heroSliderItems,heroSliderPrevBtn],"mouseout", autoSlide)
+
+window.addEventListener("load",autoSlide)
