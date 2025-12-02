@@ -87,7 +87,7 @@ const sliderNext = function () {
   updateSliderPos()
 }
 
-heroSolierNextBtn.add("click", sliderNext)
+heroSolierNextBtn.addEventListener("click", sliderNext)
 
 const sliderPrev = function () {
   if (currentSliderPos <= 0) {
@@ -112,10 +112,10 @@ const autoSlide = function () {
   }, 7000)
 }
 
-addEventOnElements([heroSliderItems,heroSliderPrevBtn], "mouseover", function(){
+addEventOnElements([heroSolierNextBtn,heroSliderPrevBtn], "mouseover", function(){
   clearInterval(autoSliderInterval)
 })
 
-addEventOnElements([heroSliderItems,heroSliderPrevBtn],"mouseout", autoSlide)
+addEventOnElements([heroSolierNextBtn,heroSliderPrevBtn],"mouseout", autoSlide)
 
 window.addEventListener("load",autoSlide)
