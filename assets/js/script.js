@@ -103,16 +103,6 @@ heroSliderPrevBtn.addEventListener("click", sliderPrev)
 
 
 
-
-
-
-
-
-
-
-
-
-
 let autoSliderInterval;
 const autoSlide = function () {
   autoSliderInterval = setInterval(function () {
